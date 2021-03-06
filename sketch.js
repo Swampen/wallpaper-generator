@@ -16,6 +16,10 @@ function draw() {
 	let noiceOffset = 0;
 	let redOffset = 0;
 	let greenOffcet = 0;
+
+	let moonHeight = height - spaceBetweenRidges*numberOfRidges - noise(noiceOffset) * amplitude*1.5;
+	fill(230);
+	ellipse(windowWidth/10*random(2, 8), moonHeight, 300)
 	
 	for (let i = numberOfRidges; i >= 1; i--) {
 		beginShape();
