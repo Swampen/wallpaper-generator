@@ -2,7 +2,9 @@
 /// <reference path="./libraries/ts-types/global.d.ts" />
 
 
-let ridgeFactor = 10;
+let smoodness = 5;
+let amplitude = 100;
+let numberOfRidges = 4;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -10,18 +12,28 @@ function setup() {
 
 function draw() {
 	background(51);
-	//noFill();
-	beginShape();
-	stroke(255);
-	vertex(0, windowHeight)
-	let noiceOff = 0
-	for (let x = 0; x < windowWidth; x += ridgeFactor) {
-		let y = noise(noiceOff)*height;
-		vertex(x, y);
+	let spaceBetweenRidges = 100;
+	let noiceOffset = 0;
+	let redOffset = 0;
+	let greenOffcet = 0;
+	
+	for (let i = numberOfRidges; i >= 1; i--) {
+		beginShape();
+		noStroke();
+		vertex(0, windowHeight);
+		fill(115 + redOffset, 46 + greenOffcet, 9);
+		
+		for (let x = 0; x <= windowWidth; x += smoodness) {
+			let y = height - spaceBetweenRidges*i - noise(noiceOffset) * amplitude;
+			vertex(x, y);
 
-		noiceOff += 0.01;
+			noiceOffset += 0.03;
+		}
+		vertex(windowWidth, windowHeight);
+		endShape();
+
+		redOffset += 30;
+		greenOffcet += 20;
 	}
-	vertex(windowWidth, windowHeight);
-	endShape();
 	noLoop();
 }
