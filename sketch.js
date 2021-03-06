@@ -38,18 +38,19 @@ function draw() {
 		noStroke();
 		vertex(0, windowHeight);
 		fill(115 + redOffset, 46 + greenOffcet, 9);
+		let y = height - spaceBetweenRidges * i - noise(noiceOffset) * amplitude;
 		
 		for (let x = 0; x <= windowWidth; x += smoodness) {
-			let y = height - spaceBetweenRidges*i - noise(noiceOffset) * amplitude;
 			vertex(x, y);
-
 			noiceOffset += 0.03;
+			y = height - spaceBetweenRidges * i - noise(noiceOffset) * amplitude;
+
 		}
+		vertex(windowWidth, y);
 		vertex(windowWidth, windowHeight);
 		endShape();
 
 		redOffset += 30;
 		greenOffcet += 20;
 	}
-	noLoop();
 }
