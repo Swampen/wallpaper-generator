@@ -1,13 +1,25 @@
 /// @ts-check
 /// <reference path="./libraries/ts-types/global.d.ts" />
 
+var smoodness = 5;
+var amplitude = 100;
+var numberOfRidges = 4;
+var moonXPosition = 0;
 
-let smoodness = 5;
-let amplitude = 100;
-let numberOfRidges = 4;
+var gui;
 
 function setup() {
+	moonXPosition = windowWidth / 10 * random(2, 8)
 	createCanvas(windowWidth, windowHeight);
+	gui = createGui('Controlls');
+	sliderRange(300, windowWidth-300)
+	gui.addGlobals('moonXPosition')
+	sliderRange(50, 200)
+	gui.addGlobals('amplitude')
+	sliderRange(2, 5)
+	gui.addGlobals('numberOfRidges')
+
+	noLoop();
 }
 
 function draw() {
@@ -17,10 +29,10 @@ function draw() {
 	let redOffset = 0;
 	let greenOffcet = 0;
 
-	let moonHeight = height - spaceBetweenRidges*numberOfRidges - noise(noiceOffset) * amplitude*1.5;
+	let moonYPosition = height - spaceBetweenRidges * numberOfRidges - noise(noiceOffset) * amplitude * 1.5;
 	fill(230);
-	ellipse(windowWidth/10*random(2, 8), moonHeight, 300)
-	
+	ellipse(moonXPosition, moonYPosition, 300)
+
 	for (let i = numberOfRidges; i >= 1; i--) {
 		beginShape();
 		noStroke();
