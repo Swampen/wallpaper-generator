@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/wallpaper-generator/static/css/main.da10437b.chunk.css",
+    "main.js": "/wallpaper-generator/static/js/main.4e6c336e.chunk.js",
+    "main.js.map": "/wallpaper-generator/static/js/main.4e6c336e.chunk.js.map",
+    "runtime-main.js": "/wallpaper-generator/static/js/runtime-main.05c308ed.js",
+    "runtime-main.js.map": "/wallpaper-generator/static/js/runtime-main.05c308ed.js.map",
+    "static/js/2.c1fad4c4.chunk.js": "/wallpaper-generator/static/js/2.c1fad4c4.chunk.js",
+    "static/js/2.c1fad4c4.chunk.js.map": "/wallpaper-generator/static/js/2.c1fad4c4.chunk.js.map",
+    "static/js/3.fb3b04e9.chunk.js": "/wallpaper-generator/static/js/3.fb3b04e9.chunk.js",
+    "static/js/3.fb3b04e9.chunk.js.map": "/wallpaper-generator/static/js/3.fb3b04e9.chunk.js.map",
+    "index.html": "/wallpaper-generator/index.html",
+    "static/css/main.da10437b.chunk.css.map": "/wallpaper-generator/static/css/main.da10437b.chunk.css.map",
+    "static/js/2.c1fad4c4.chunk.js.LICENSE.txt": "/wallpaper-generator/static/js/2.c1fad4c4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.05c308ed.js",
+    "static/js/2.c1fad4c4.chunk.js",
+    "static/css/main.da10437b.chunk.css",
+    "static/js/main.4e6c336e.chunk.js"
+  ]
+}
