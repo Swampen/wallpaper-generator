@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,node
+# Created by https://www.toptal.com/developers/gitignore/api/react,vscode,visualstudiocode,node
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,vscode,visualstudiocode,node
 
 ### Node ###
 # Logs
@@ -116,6 +116,19 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
+
+node_modules
+
+*.sublime*
+
+psd
+thumb
+sketch
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/tasks.json
@@ -127,4 +140,4 @@ dist
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node
+# End of https://www.toptal.com/developers/gitignore/api/react,vscode,visualstudiocode,node
