@@ -22,14 +22,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - name: Clean install dependencies
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Install dependencies
         run: npm ci
       - name: Run deploy script
         run: |
-          git config user.name "Swampen" && git config user.email "ole-ma@outlook.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           npm run deploy
