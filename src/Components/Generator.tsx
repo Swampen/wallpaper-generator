@@ -16,8 +16,6 @@ class InitialSettings {
 const Generator: React.FC = () => {
 	let Settings = new InitialSettings()
 
-	
-
 	//See annotations in JS for more information
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
