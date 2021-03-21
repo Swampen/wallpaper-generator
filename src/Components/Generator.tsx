@@ -3,19 +3,18 @@ import Sketch from "react-p5";
 import p5Types from "p5";
 import QuickSettings from "quicksettings";
 
-interface Props {
+class InitialSettings {
+	Amplitude = 100;
+	Smoodness = 5;
+	NumberOfRidges = 4;
+	SpaceBetweenRidges = 100;
+	MoonXPosition = 0;
+	MoonYPosition = 0;
+	MoonSize = 300;
 }
 
-const Generator: React.FC<Props> = (props: Props) => {
-	let Settings = {
-		Amplitude: 100,
-		Smoodness: 5,
-		NumberOfRidges: 4,
-		SpaceBetweenRidges: 100,
-		MoonXPosition: 0,
-		MoonYPosition: 0,
-		MoonSize: 300
-	}
+const Generator: React.FC = () => {
+	let Settings = new InitialSettings()
 
 	
 
