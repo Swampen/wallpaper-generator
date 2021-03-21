@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '14.x'
       - run: npm ci
-      - run: npm deploy
+      - run: npm run deploy
       
       - uses: actions/checkout@v2
 
