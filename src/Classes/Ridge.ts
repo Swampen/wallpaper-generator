@@ -1,12 +1,40 @@
-import p5 from "p5";
+import p5Types from "p5";
+import React from "react";
+
 
 export class Ridge{
-    Fill: p5.Color;
-    RidgeXStart = 0
-    RidgeYEnd: number;
+    Fill: p5Types.Color;
+    RidgeXStart: number;
+    RidgeYStart: number;
+    Smoodness: number;
+    Amplitude: number;
+    NoiceStart: number;
+    
+    constructor(Fill: p5Types.Color, RidgeYStart: number, Smoodness: number, Amplitude: number, NoiceStart: number) {
+        this.Fill = Fill;
+        this.RidgeXStart = 0;
+        this.RidgeYStart = RidgeYStart;
+        this.Smoodness = Smoodness;
+        this.Amplitude = Amplitude;
+        this.NoiceStart = NoiceStart;
+    }
 
-    constructor(Fill: p5.Color, RidgeYEnd: number) {
-        this.Fill = Fill,
-        this.RidgeYEnd = RidgeYEnd
+    DrawRidge(p5: p5Types) {
+        p5.beginShape();
+        p5.noStroke();
+        p5.fill(this.Fill);
+        p5.vertex(0, p5.windowHeight);
+        let noiceOffset = this.NoiceStart;
+        let y = this.RidgeYStart - p5.noise(noiceOffset) * this.Amplitude;
+        p5.vertex(0, y)
+        for (let x = 0; x <= p5.windowWidth; x += this.Smoodness) {
+            p5.vertex(x, y);
+            noiceOffset += 0.03;
+            let direction = p5.random() < 0.5 ? -1 : 1;
+            y = this.RidgeYStart - p5.noise(noiceOffset) * this.Amplitude ;
+        }
+        p5.vertex(p5.windowWidth, y);
+        p5.vertex(p5.windowWidth, p5.windowHeight);
+        p5.endShape(p5.CLOSE);
     }
 }

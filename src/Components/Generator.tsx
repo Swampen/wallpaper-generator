@@ -2,6 +2,7 @@ import React from "react";
 import Sketch from "react-p5";
 import p5Types from "p5";
 import QuickSettings from "quicksettings";
+import { Ridge } from "../Classes/Ridge";
 
 class InitialSettings {
 	Amplitude = 100;
@@ -24,7 +25,7 @@ const Generator: React.FC = () => {
 
 		let gui = QuickSettings.create(20, 20, "Settings")
 		gui.bindRange("Amplitude", 0, 300, Settings.Amplitude, 1, Settings);
-		gui.bindRange("Smoodness", 1, 50, Settings.Smoodness, 1, Settings);
+		gui.bindRange("Smoodness", 1, 10, Settings.Smoodness, 0.2, Settings);
 		gui.bindRange("NumberOfRidges", 1, 10, Settings.NumberOfRidges, 1, Settings);
 		gui.bindRange("SpaceBetweenRidges", 50, 500, Settings.SpaceBetweenRidges, 1, Settings);
 		gui.bindRange("MoonXPosition", 0, p5.windowWidth, Settings.MoonXPosition, 1, Settings);
@@ -37,7 +38,6 @@ const Generator: React.FC = () => {
 
 
 	const draw = (p5: p5Types) => {		
-		let noiceOffset = 0;
 		let redOffset = 0;
 		let greenOffcet = 0;
 
@@ -46,21 +46,9 @@ const Generator: React.FC = () => {
 		p5.ellipse(Settings.MoonXPosition, Settings.MoonYPosition, Settings.MoonSize)
 
 		for (let i = Settings.NumberOfRidges; i >= 1; i--) {
-			p5.beginShape();
-			p5.noStroke();
-			p5.vertex(0, p5.windowHeight);
-			p5.fill(115 + redOffset, 46 + greenOffcet, 9);
-			let y = p5.height - Settings.SpaceBetweenRidges * i - p5.noise(noiceOffset) * Settings.Amplitude;
-
-			for (let x = 0; x <= p5.windowWidth; x += Settings.Smoodness) {
-				p5.vertex(x, y);
-				noiceOffset += 0.03;
-				y = p5.height - Settings.SpaceBetweenRidges * i - p5.noise(noiceOffset) * Settings.Amplitude;
-
-			}
-			p5.vertex(p5.windowWidth, y);
-			p5.vertex(p5.windowWidth, p5.windowHeight);
-			p5.endShape();
+			let y = p5.height - Settings.SpaceBetweenRidges * i - 0.3 * Settings.Amplitude;
+			let ridge = new Ridge(p5.color(115 + redOffset, 46 + greenOffcet, 9), y, Settings.Smoodness, Settings.Amplitude, i^(i*10));
+			ridge.DrawRidge(p5)
 
 			redOffset += 30;
 			greenOffcet += 20;
