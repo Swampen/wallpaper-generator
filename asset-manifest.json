@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/wallpaper-generator/static/css/main.da10437b.chunk.css",
-    "main.js": "/wallpaper-generator/static/js/main.3aea9f97.chunk.js",
-    "main.js.map": "/wallpaper-generator/static/js/main.3aea9f97.chunk.js.map",
+    "main.css": "/wallpaper-generator/static/css/main.f0848e52.chunk.css",
+    "main.js": "/wallpaper-generator/static/js/main.f703f144.chunk.js",
+    "main.js.map": "/wallpaper-generator/static/js/main.f703f144.chunk.js.map",
     "runtime-main.js": "/wallpaper-generator/static/js/runtime-main.05c308ed.js",
     "runtime-main.js.map": "/wallpaper-generator/static/js/runtime-main.05c308ed.js.map",
-    "static/js/2.6269738d.chunk.js": "/wallpaper-generator/static/js/2.6269738d.chunk.js",
-    "static/js/2.6269738d.chunk.js.map": "/wallpaper-generator/static/js/2.6269738d.chunk.js.map",
+    "static/js/2.534c8706.chunk.js": "/wallpaper-generator/static/js/2.534c8706.chunk.js",
+    "static/js/2.534c8706.chunk.js.map": "/wallpaper-generator/static/js/2.534c8706.chunk.js.map",
     "static/js/3.fb3b04e9.chunk.js": "/wallpaper-generator/static/js/3.fb3b04e9.chunk.js",
     "static/js/3.fb3b04e9.chunk.js.map": "/wallpaper-generator/static/js/3.fb3b04e9.chunk.js.map",
     "index.html": "/wallpaper-generator/index.html",
-    "static/css/main.da10437b.chunk.css.map": "/wallpaper-generator/static/css/main.da10437b.chunk.css.map",
-    "static/js/2.6269738d.chunk.js.LICENSE.txt": "/wallpaper-generator/static/js/2.6269738d.chunk.js.LICENSE.txt"
+    "static/css/main.f0848e52.chunk.css.map": "/wallpaper-generator/static/css/main.f0848e52.chunk.css.map",
+    "static/js/2.534c8706.chunk.js.LICENSE.txt": "/wallpaper-generator/static/js/2.534c8706.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.05c308ed.js",
-    "static/js/2.6269738d.chunk.js",
-    "static/css/main.da10437b.chunk.css",
-    "static/js/main.3aea9f97.chunk.js"
+    "static/js/2.534c8706.chunk.js",
+    "static/css/main.f0848e52.chunk.css",
+    "static/js/main.f703f144.chunk.js"
   ]
 }
