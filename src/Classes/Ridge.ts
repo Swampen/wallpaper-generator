@@ -1,6 +1,4 @@
 import p5Types from "p5";
-import React from "react";
-
 
 export class Ridge{
     Fill: p5Types.Color;
@@ -30,7 +28,6 @@ export class Ridge{
         for (let x = 0; x <= p5.windowWidth; x += this.Smoodness) {
             p5.vertex(x, y);
             noiceOffset += 0.03;
-            let direction = p5.random() < 0.5 ? -1 : 1;
             y = this.RidgeYStart - p5.noise(noiceOffset) * this.Amplitude ;
         }
         p5.vertex(p5.windowWidth, y);
