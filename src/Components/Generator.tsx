@@ -67,9 +67,13 @@ const Generator: React.FC = () => {
 		}
 	};
 
+	const windowResized = (p5: p5Types) => {
+		p5.resizeCanvas(p5.windowWidth, p5.windowHeight)
+	}
+
 	return (
 		<div>
-			<Sketch setup={setup} draw={draw} />
+			<Sketch setup={setup} draw={draw} windowResized={windowResized} />
 		</div>
 	);
 };
