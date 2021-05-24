@@ -6,6 +6,7 @@ import * as dat from "dat.gui"
 
 const Generator: React.FC = () => {
 	let Settings = {
+		Seed: 0,
 		Amplitude: 100,
 		Smoodness: 5,
 		NumberOfRidges: 4,
@@ -19,10 +20,12 @@ const Generator: React.FC = () => {
 
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef).id("canvas");
+		Settings.Seed = p5.random(-99999, 99999)
 		Settings.MoonXPosition = p5.windowWidth / 10 * p5.random(2, 8)
 		Settings.MoonYPosition = p5.windowHeight - Settings.SpaceBetweenRidges * Settings.NumberOfRidges - p5.noise(0) * Settings.Amplitude * 1.5;
 		let gui = new dat.GUI();
 		gui.useLocalStorage = true;
+		gui.add(Settings, "Seed", -99999, 99999, 5).onChange(() => p5.redraw());
 		let mountainsSettings = gui.addFolder("Mountains");
 		mountainsSettings.open();
 		mountainsSettings.add(Settings, "Amplitude", 0, 300, 5).onChange(() => p5.redraw());
@@ -60,6 +63,7 @@ const Generator: React.FC = () => {
 
 
 	const draw = (p5: p5Types) => {
+		p5.noiseSeed(Settings.Seed)
 		let color = p5.color(Settings.RidgeColor)
 		let red = p5.red(color);
 		let green = p5.green(color);
@@ -77,7 +81,8 @@ const Generator: React.FC = () => {
 		drawingContext.shadowBlur = 0;
 		for (let i = Settings.NumberOfRidges; i >= 1; i--) {
 			let y = p5.height - Settings.SpaceBetweenRidges * i - 0.3 * Settings.Amplitude;
-			let ridge = new Ridge(p5.color(red + redOffset, green + greenOffcet, blue), y, Settings.Smoodness, Settings.Amplitude, i ^ (i * 10));
+			let color = p5.color(red + redOffset, green + greenOffcet, blue)
+			let ridge = new Ridge(color, y, Settings.Smoodness, Settings.Amplitude, Settings.Seed * i);
 			ridge.DrawRidge(p5)
 
 			redOffset += 30;
