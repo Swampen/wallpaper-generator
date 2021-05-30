@@ -22,10 +22,11 @@ export class Ridge{
         p5.noStroke();
         p5.fill(this.Fill);
         p5.vertex(0, p5.windowHeight);
+        p5.noiseDetail(this.Smoodness, 0.7)
         let noiceOffset = this.NoiceStart;
         let y = this.RidgeYStart - p5.noise(noiceOffset) * this.Amplitude;
         p5.vertex(0, y)
-        for (let x = 0; x <= p5.windowWidth; x += this.Smoodness) {
+        for (let x = 0; x <= p5.windowWidth; x += 4) {
             p5.vertex(x, y);
             noiceOffset += 0.03;
             y = this.RidgeYStart - p5.noise(noiceOffset) * this.Amplitude ;

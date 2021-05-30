@@ -8,7 +8,7 @@ const Generator: React.FC = () => {
 	let Settings = {
 		Seed: 0,
 		Amplitude: 100,
-		Smoodness: 5,
+		Smoodness: 4,
 		NumberOfRidges: 4,
 		SpaceBetweenRidges: 100,
 		RidgeColor: "#732e09",
@@ -29,7 +29,7 @@ const Generator: React.FC = () => {
 		let mountainsSettings = gui.addFolder("Mountains");
 		mountainsSettings.open();
 		mountainsSettings.add(Settings, "Amplitude", 0, 300, 5).onChange(() => p5.redraw());
-		mountainsSettings.add(Settings, "Smoodness", 0, 10, 0.2).onChange(() => p5.redraw());
+		mountainsSettings.add(Settings, "Smoodness", 1, 12, 1).onChange(() => p5.redraw());
 		mountainsSettings
 			.add(Settings, "NumberOfRidges", 1, 10, 1)
 			.name("Number of Ridges")
