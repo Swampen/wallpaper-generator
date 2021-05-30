@@ -8,10 +8,11 @@ const Generator: React.FC = () => {
 	let Settings = {
 		Seed: 0,
 		Amplitude: 100,
-		Smoodness: 5,
+		Smoodness: 4,
 		NumberOfRidges: 4,
 		SpaceBetweenRidges: 100,
-		RidgeColor: "#732e09",
+		BackRidgeColor: "#6a6a6e",
+		FrontRidgeColor: "#000064",
 		MoonXPosition: 0,
 		MoonYPosition: 0,
 		MoonSize: 300
@@ -29,7 +30,7 @@ const Generator: React.FC = () => {
 		let mountainsSettings = gui.addFolder("Mountains");
 		mountainsSettings.open();
 		mountainsSettings.add(Settings, "Amplitude", 0, 300, 5).onChange(() => p5.redraw());
-		mountainsSettings.add(Settings, "Smoodness", 0, 10, 0.2).onChange(() => p5.redraw());
+		mountainsSettings.add(Settings, "Smoodness", 1, 12, 1).onChange(() => p5.redraw());
 		mountainsSettings
 			.add(Settings, "NumberOfRidges", 1, 10, 1)
 			.name("Number of Ridges")
@@ -38,8 +39,11 @@ const Generator: React.FC = () => {
 			.add(Settings, "SpaceBetweenRidges", 50, 200, 5)
 			.name("Space")
 			.onChange(() => p5.redraw());
-		mountainsSettings.addColor(Settings, "RidgeColor")
-			.name("Color")
+		mountainsSettings.addColor(Settings, "BackRidgeColor")
+			.name("Back Color")
+			.onChange(() => p5.redraw());
+		mountainsSettings.addColor(Settings, "FrontRidgeColor")
+			.name("Front Color")
 			.onChange(() => p5.redraw());
 		let moonSettings = gui.addFolder("Moon");
 		moonSettings.open();
@@ -64,12 +68,10 @@ const Generator: React.FC = () => {
 
 	const draw = (p5: p5Types) => {
 		p5.noiseSeed(Settings.Seed)
-		let color = p5.color(Settings.RidgeColor)
-		let red = p5.red(color);
-		let green = p5.green(color);
-		let blue = p5.blue(color);
-		let redOffset = 0;
-		let greenOffcet = 0;
+		let startColor = p5.color(Settings.BackRidgeColor);
+		let endColor = p5.color(Settings.FrontRidgeColor);
+		let colorDelta = 1 / Settings.NumberOfRidges;
+		let lerpStart = 0;
 
 		p5.background(51);
 		p5.fill(230);
@@ -80,13 +82,11 @@ const Generator: React.FC = () => {
 		p5.ellipse(Settings.MoonXPosition, Settings.MoonYPosition, Settings.MoonSize)
 		drawingContext.shadowBlur = 0;
 		for (let i = Settings.NumberOfRidges; i >= 1; i--) {
+			let color = p5.lerpColor(startColor, endColor, lerpStart)
 			let y = p5.height - Settings.SpaceBetweenRidges * i - 0.3 * Settings.Amplitude;
-			let color = p5.color(red + redOffset, green + greenOffcet, blue)
 			let ridge = new Ridge(color, y, Settings.Smoodness, Settings.Amplitude, Settings.Seed * i);
 			ridge.DrawRidge(p5)
-
-			redOffset += 30;
-			greenOffcet += 20;
+			lerpStart += colorDelta
 		}
 	};
 
